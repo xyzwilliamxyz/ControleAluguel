@@ -12,4 +12,6 @@ import br.com.controle.aluguel.model.Pessoa;
 public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 
 	List<Pessoa> findAll();
+	
+	Pessoa save(Pessoa p);
 }

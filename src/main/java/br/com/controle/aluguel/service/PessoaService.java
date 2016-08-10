@@ -20,4 +20,11 @@ public class PessoaService {
 		
 		return pessoas;
 	}
+	
+	public Pessoa savePessoa(Pessoa pessoa) {
+		
+		Pessoa p = pessoaRepository.save(pessoa);
+		
+		return p;
+	}
 }
