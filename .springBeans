@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:br.com.controle.aluguel.config.ControleAluguelApplication</config>
+		<config>java:br.com.controle.aluguel.ControleAluguelApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
