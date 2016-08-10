@@ -11,18 +11,13 @@ import br.com.controle.aluguel.repository.PessoaRepository;
 @Service
 public class PessoaService {
 
-//	@Autowired
-//	private PessoaRepository pessoaRepository;
-//	
-//	public List<Pessoa> getPessoas() {
-//		
-//		List<Pessoa> pessoas = pessoaRepository.findAll();
-//		
-//		return pessoas;
-//	}
+	@Autowired
+	private PessoaRepository pessoaRepository;
 	
 	public List<Pessoa> getPessoas() {
 		
-		return null;
+		List<Pessoa> pessoas = pessoaRepository.findAll();
+		
+		return pessoas;
 	}
 }

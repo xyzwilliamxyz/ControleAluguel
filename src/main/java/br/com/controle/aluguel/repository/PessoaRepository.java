@@ -2,12 +2,14 @@ package br.com.controle.aluguel.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.controle.aluguel.model.Pessoa;
 
 
-public interface PessoaRepository {//extends Repository<Pessoa, Long> {
+@Repository
+public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 
 	List<Pessoa> findAll();
 }

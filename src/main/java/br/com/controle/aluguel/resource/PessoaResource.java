@@ -12,15 +12,13 @@ import br.com.controle.aluguel.model.Pessoa;
 import br.com.controle.aluguel.service.PessoaService;
 
 @RestController
-public class PessoaController {
+public class PessoaResource {
 
 	@Autowired
 	private PessoaService pessoaService;
 	
 	@RequestMapping("/pessoa")
 	public ResponseEntity<List<Pessoa>> getPessoas() {
-		
-		System.out.println("TESTEEEE");
 		
 		List<Pessoa> pessoas = pessoaService.getPessoas();
 		
