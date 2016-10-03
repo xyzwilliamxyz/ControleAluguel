@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.controle.aluguel.model.Pessoa;
 
-
+@SuppressWarnings("unchecked")
 @Repository
 public interface PessoaRepository extends CrudRepository<Pessoa, Long> {
 

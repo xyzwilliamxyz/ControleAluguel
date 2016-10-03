@@ -27,11 +27,7 @@ public class PessoaResource {
 		
 		List<Pessoa> pessoas; 
 		
-		try {
-			pessoas = pessoaService.getPessoas();
-		} catch (Exception e) {
-			return new ResponseEntity<List<Pessoa>>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		pessoas = pessoaService.getPessoas();
 		
 		return new ResponseEntity<List<Pessoa>>(pessoas, HttpStatus.OK);
 	}
@@ -41,11 +37,7 @@ public class PessoaResource {
 		
 		Pessoa pessoa = convert(pessoaTO);
 		
-		try {
-			pessoa = pessoaService.savePessoa(pessoa);
-		} catch (Exception e) {
-			return new ResponseEntity<Pessoa>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		pessoa = pessoaService.savePessoa(pessoa);
 			
 		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}

@@ -1,5 +1,7 @@
 package br.com.controle.aluguel.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,12 @@ public class CasaService {
 		Casa c = casaRepository.save(casa);
 		
 		return c;
+	}
+	
+	public List<Casa> getCasas() {
+		
+		List<Casa> casas = casaRepository.findAll();
+		
+		return casas;
 	}
 }

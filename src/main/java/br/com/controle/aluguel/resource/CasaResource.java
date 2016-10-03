@@ -1,5 +1,7 @@
 package br.com.controle.aluguel.resource;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.controle.aluguel.model.Casa;
@@ -20,18 +23,22 @@ public class CasaResource {
 	@Autowired
 	private CasaService casaService;
 
-	@RequestMapping("/casa")
+	@RequestMapping(value = "/casa", method = RequestMethod.POST)
 	public ResponseEntity<Casa> saveCasa(@Valid @RequestBody CasaTO casaTO) {
 		
 		Casa casa = convert(casaTO);
 		
-		try {
-			casa = casaService.saveCasa(casa);
-		} catch (Exception e) {
-			return new ResponseEntity<Casa>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		casa = casaService.saveCasa(casa);
 		
 		return new ResponseEntity<Casa>(casa, HttpStatus.OK);
+	}
+	
+	@RequestMapping("/casa")
+	public ResponseEntity<List<Casa>> getCasas() throws Exception {
+		
+		List<Casa> casas = casaService.getCasas();
+		
+		return new ResponseEntity<List<Casa>>(casas, HttpStatus.OK);
 	}
 	
 	public Casa convert(CasaTO casaTO) {
@@ -50,4 +57,6 @@ public class CasaResource {
 		
 		return c;
 	}
+	
+
 }

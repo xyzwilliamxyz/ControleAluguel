@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: ControleAluguel
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: root
+Built-By: Void
 Implementation-Vendor-Id: br.com.controle-aluguel
 Build-Jdk: 1.8.0_101
 Implementation-URL: http://projects.spring.io/spring-boot/controle-alu
