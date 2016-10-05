@@ -36,8 +36,12 @@ public class Pagamento implements Serializable {
 	@Column(name="data_pagamento_realizado")
 	private Date dataPagamentoRealizado;
 	
+	@Column(name="conta_agua")
 	private Double contaAgua;
+	
+	@Column(name="conta_energia")
 	private Double contaEnergia;
+	
 	private String observacao;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,10 +19,11 @@ public class ExceptionHandling {
 	
 	private Logger logger = Logger.getLogger(ExceptionHandling.class.getName());
 	
-	@ExceptionHandler(BusinessException.class)
-	public ResponseEntity<ErrorResponse> businessExceptionHandler(BusinessException ex) {
+	@ExceptionHandler(CustomException.class)
+	public ResponseEntity<ErrorResponse> businessExceptionHandler(CustomException ex) {
 		
 		logger.error(ex.getMessage());
+		ex.printStackTrace();
 		
 		ErrorResponse error = new ErrorResponse();
 		error.setStatus(ex.getErrorCode());
@@ -34,12 +36,14 @@ public class ExceptionHandling {
 	public ResponseEntity<ErrorResponse> exceptionDefaultValidationHandler(MethodArgumentNotValidException ex) {
 		
 		logger.error(ex.getMessage());
+		ex.printStackTrace();
 		
 		ErrorResponse error = new ErrorResponse();
 		
 		List<ObjectError> errorsValidation = ex.getBindingResult().getAllErrors();
+		
 		for (ObjectError ev : errorsValidation) {
-			error.getErrors().add(ev.getDefaultMessage());
+			error.getErrors().add("'" + ((FieldError)ev).getField() + "': " + ev.getDefaultMessage());
 		}
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		
@@ -50,6 +54,7 @@ public class ExceptionHandling {
 	public ResponseEntity<ErrorResponse> internalServerErrorExceptionHandler(Exception ex) {
 		
 		logger.error(ex.getMessage());
+		ex.printStackTrace();
 		
 		ErrorResponse error = new ErrorResponse();
 		error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());

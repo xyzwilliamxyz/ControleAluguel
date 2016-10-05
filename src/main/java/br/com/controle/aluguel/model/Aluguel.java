@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="aluguel")
 public class Aluguel implements Serializable {
@@ -40,7 +42,8 @@ public class Aluguel implements Serializable {
 	
 	private String observacao;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="aluguel")
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="aluguel")
+	@JsonIgnore
 	private List<Pagamento> pagamentos;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
@@ -48,6 +51,7 @@ public class Aluguel implements Serializable {
 	private Casa casa;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="aluguel")
+	@JsonIgnore
 	private List<PessoaAluguel> pessoaAluguels;
 
 	public Long getAluguelId() {
@@ -104,5 +108,21 @@ public class Aluguel implements Serializable {
 
 	public void setCasa(Casa casa) {
 		this.casa = casa;
+	}
+
+	public List<Pagamento> getPagamentos() {
+		return pagamentos;
+	}
+
+	public void setPagamentos(List<Pagamento> pagamentos) {
+		this.pagamentos = pagamentos;
+	}
+
+	public List<PessoaAluguel> getPessoaAluguels() {
+		return pessoaAluguels;
+	}
+
+	public void setPessoaAluguels(List<PessoaAluguel> pessoaAluguels) {
+		this.pessoaAluguels = pessoaAluguels;
 	}
 }

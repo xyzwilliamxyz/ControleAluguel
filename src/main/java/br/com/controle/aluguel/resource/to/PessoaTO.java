@@ -18,6 +18,8 @@ public class PessoaTO {
 	@Size(max=2000)
 	private String observacao;
 	
+	private Integer tipo;
+	
 	public Long getPessoaId() {
 		return pessoaId;
 	}
@@ -48,4 +50,11 @@ public class PessoaTO {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
+	public Integer getTipo() {
+		return tipo;
+	}
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}
+	
 }

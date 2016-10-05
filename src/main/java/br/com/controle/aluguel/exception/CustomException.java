@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-public class BusinessException extends Exception {
+public class CustomException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 	private int errorCode;
 	private List<String> errors;
 	
-	public BusinessException(int errorCode, String... messages) {
+	public CustomException(int errorCode, String... messages) {
 		super(messages[0]);
 		
 		errors = new ArrayList<>();
@@ -20,7 +20,7 @@ public class BusinessException extends Exception {
 		this.errorCode = errorCode;
 	}
 	
-	public BusinessException(String... messages) {
+	public CustomException(String... messages) {
 		this(HttpStatus.BAD_REQUEST.value(), messages);
 	}
 	
