@@ -1,0 +1,30 @@
+<div class="p+">
+    <div class="card">
+        
+        <div class="p+ pt0">
+            
+            <strong class="fs-headline display-block form-header">Cadastro</strong>
+            
+            <lx-text-field lx-label="Nome" lx-allow-clear="true">
+                <input type="text" ng-model="pessoa.nome">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="RG" lx-allow-clear="true">
+                <input type="text" ng-model="pessoa.rg">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="CPF" lx-allow-clear="true">
+                <input type="text" ng-model="pessoa.cpf">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="Observação" lx-allow-clear="true">
+                <textarea ng-model="pessoa.observacao"></textarea>
+            </lx-text-field>
+            
+            <div class="form-submit">
+                <lx-button lx-size="xl" lx-type="flat" ng-click="cancel()">CANCELAR</lx-button>
+                <lx-button lx-size="xl" lx-type="raised" ng-click="savePessoa()">SALVAR</lx-button>
+            </div>
+        </div>
+    </div>
+</div>

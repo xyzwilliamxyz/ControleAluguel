@@ -1,0 +1,34 @@
+<div class="p+">
+    <div class="card">
+        
+        <div class="p+ pt0">
+            
+            <strong class="fs-headline display-block form-header">Cadastro</strong>
+            
+            <lx-text-field lx-label="Rua" lx-allow-clear="true">
+                <input type="text" ng-model="casa.endereco.rua">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="Número" lx-allow-clear="true">
+                <input type="text" ng-model="casa.endereco.numero">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="Bairro" lx-allow-clear="true">
+                <input type="text" ng-model="casa.endereco.bairro">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="Comodos" lx-allow-clear="true">
+                <input type="text" ng-model="casa.comodos">
+            </lx-text-field>
+            
+            <lx-text-field lx-label="Observação" lx-allow-clear="true">
+                <textarea ng-model="casa.observacao"></textarea>
+            </lx-text-field>
+            
+            <div class="form-submit">
+                <lx-button lx-size="xl" lx-type="flat" ng-click="cancel()">CANCELAR</lx-button>
+                <lx-button lx-size="xl" lx-type="raised" ng-click="saveCasa()">SALVAR</lx-button>
+            </div>
+        </div>
+    </div>
+</div>

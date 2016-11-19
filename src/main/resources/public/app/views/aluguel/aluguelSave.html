@@ -1,0 +1,184 @@
+<div class="p+">
+    <div class="card">
+        
+        <div class="p+ pt0">
+            
+            <strong class="fs-headline display-block form-header">Cadastro</strong>
+            
+            <div flex-container="row" flex-gutter="24">
+            
+                <div flex-item>
+                    <lx-date-picker ng-model="aluguel.dataInicio"
+                            lx-input-format="L"
+                            lx-locale="pt-BR">
+                        <lx-text-field lx-label="Data Início" lx-allow-clear="true">
+                            <input type="text" ng-model="dataInicioFormatted">
+                        </lx-text-field>
+                    </lx-date-picker>
+                </div>
+                
+                <div flex-item>
+                    <lx-date-picker ng-model="aluguel.dataTermino"
+                            lx-input-format="L"
+                            lx-locale="pt-BR">
+                        <lx-text-field lx-label="Data Término" lx-allow-clear="true">
+                            <input type="text" ng-model="dataTerminoFormatted">
+                        </lx-text-field>
+                    </lx-date-picker>
+                </div>
+                
+                
+            </div>
+            
+            <div flex-container="row" flex-gutter="24">
+                
+                <div flex-item>
+                    <lx-text-field lx-label="Dia Pagamento" lx-allow-clear="true">
+                        <input type="text" ng-model="aluguel.diaPagamento">
+                    </lx-text-field>
+                </div>
+                
+                <div flex-item>
+                    <lx-text-field lx-label="Valor Aluguel (R$)" lx-allow-clear="true">
+                        <input type="text" ng-model="aluguel.valor">
+                    </lx-text-field>
+                </div>
+            </div>
+            
+            <div class="p+">
+                <lx-button ng-click="openDialog()">Adicionar Pessoa</lx-button>
+            </div>
+            
+            
+            <lx-dialog id="add-pessoa">
+                <lx-dialog-header>
+                    <div class="toolbar bgc-primary pl++">
+                        <span class="toolbar__label tc-white fs-title">
+                           Adicionar Pessoa
+                        </span>
+                    </div>
+                </lx-dialog-header>
+ 
+                <lx-dialog-content>
+                    
+                    <div class="p+">
+                        <lx-select 
+                           ng-model="aluguel.pessoaSelecionada"
+                           lx-allow-clear="true"
+                           lx-choices="pessoas"
+                           lx-label="Pessoa">
+                            <lx-select-selected>
+                                 {{ $selected.nome }}, RG: {{ $selected.rg }} - CPF: {{ $selected.cpf }}
+                            </lx-select-selected>
+
+                            <lx-select-choices>
+                                 {{ $choice.nome }}, RG: {{ $choice.rg }} - CPF: {{ $choice.cpf }}
+                            </lx-select-choices>
+                        </lx-select>
+                    </div>
+                    
+                    <div class="p+">
+                        <lx-select 
+                           ng-model="aluguel.pessoaSelecionada.tipo"
+                           lx-allow-clear="true"
+                           lx-choices="tiposPessoa"
+                           lx-label="Tipo">
+                            <lx-select-selected>
+                                 {{ $selected.descricao }}
+                            </lx-select-selected>
+
+                            <lx-select-choices>
+                                 {{ $choice.descricao }}
+                            </lx-select-choices>
+                        </lx-select>
+                    </div>
+                </lx-dialog-content>
+
+                <lx-dialog-footer>
+                    <lx-button lx-color="black" lx-type="flat" lx-dialog-close>Cancelar</lx-button>
+                    <lx-button lx-type="flat" ng-click="addPessoa(aluguel.pessoaSelecionada)">Ok</lx-button>
+                </lx-dialog-footer>
+            </lx-dialog>
+            
+            
+            
+            <div class="container-box">
+                <div class="container-header">
+
+                    <h3>
+                        Pessoas
+                    </h3>
+                </div>
+                
+                <div class="container-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr> 
+                                <th>Nome</th>
+                                <th>RG</th>
+                                <th>CPF</th>
+                                <th>Tipo</th>
+                                <th>Remover</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr dir-paginate="pessoa in aluguel.pessoas | itemsPerPage: 10" ng-class="{'odd-table-row': ($index + 1) % 2 == 1}"
+                                ng-click="goToDetails(casa.casaId)">
+                                <td>{{pessoa.nome}}</td>
+                                <td>{{pessoa.rg}}</td>
+                                <td>{{pessoa.cpf}}</td>
+                                <td>{{getTipoPessoa(pessoa.tipo)}}</td>
+                                <td><lx-icon class="delete-row" lx-type="flat" lx-id="close-circle" lx-size="xs" lx-color="black" 
+                                             ng-click="removePessoa(pessoa.pessoaId)"></lx-icon></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="container-box">
+                <div class="container-header">
+
+                    <h3>
+                        Mensalidades
+                    </h3>
+                </div>
+                
+                <div class="container-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr> 
+                                <th>Valor</th>
+                                <th>Valor Pago</th>
+                                <th>Data Pagamento</th>
+                                <th>Data Pagamento Realizado</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr dir-paginate="pagamento in aluguel.pagamentos | itemsPerPage: 10" ng-class="{'odd-table-row': ($index + 1) % 2 == 1}"
+                                ng-click="goToDetails(casa.casaId)">
+                                <td>{{pagamento.valor}}</td>
+                                <td>{{pagamento.valorPago}}</td>
+                                <td>{{pagamento.dataPagamento}}</td>
+                                <td>{{pagamento.dataPagamentoRealizado}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <lx-text-field lx-label="Observação" lx-allow-clear="true">
+                <textarea ng-model="aluguel.observacao"></textarea>
+            </lx-text-field>
+            
+            
+            <div class="form-submit">
+                <lx-button lx-size="xl" lx-type="flat" ng-click="cancel()">CANCELAR</lx-button>
+                <lx-button lx-size="xl" lx-type="raised" ng-click="saveAluguel()">SALVAR</lx-button>
+            </div>
+        </div>
+    </div>
+</div>

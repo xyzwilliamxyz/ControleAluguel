@@ -1,0 +1,109 @@
+@media screen and (max-width:680px) {
+
+	.expanded-menu {
+		display: none;
+	}
+}
+
+@media screen and (min-width:680px) {
+
+	.collapsed-menu {
+		display: none;
+	}
+}
+
+.toolbar-color {
+	background-color: #3F51B5;
+}
+
+.white {
+    color: white;
+}
+
+.form-submit {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.form-header {
+    margin-top: 20px;
+}
+
+.odd-table-row {
+    background-color: #F5F5F5;
+}
+
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li button {
+    color: gray;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+}
+
+ul.pagination li i {
+    color: gray;
+    float: left;
+    text-decoration: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pagination-arrow {
+    font-size: 30px;
+}
+
+.data-table td {
+    
+    height: 14px !important;
+}
+
+.data-table tbody tr:not(.odd-table-row), .data-table th {
+    background-color: #FFF;
+}
+
+.data-table tbody tr {
+    cursor: pointer;
+}
+
+
+.data-table tbody tr:hover {
+    
+    background-color: #E8EAF6;
+}
+
+.container-box {
+    
+    margin-top: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    background-color: #EEE;
+}
+
+.container-header {
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #FAFAFA;
+}
+
+.container-body {
+    
+}
+
+.delete-row:hover {
+    color: red !important;
+}

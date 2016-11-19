@@ -1,0 +1,41 @@
+<div class="p+">
+    <div class="card">
+        <div class="p+">
+            
+            <div class="data-table-container">
+                <header class="data-table-header">
+                    <div class="data-table-header__label">
+                        <span class="fs-title">Listagem</span>
+                    </div>
+
+                    <div class="data-table-header__actions">
+                        <a href="#/casa/add"><lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button></a>
+                    </div>
+                </header>
+
+                <table class="data-table">
+                    <thead>
+                        <tr> 
+                            <th>Bairro</th>
+                            <th>Rua</th>
+                            <th>Número</th>
+                            <th>Alugada</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr dir-paginate="casa in casas | itemsPerPage: 10" ng-class="{'odd-table-row': ($index + 1) % 2 == 1}"
+                            ng-click="goToDetails(casa.casaId)">
+                            <td>{{casa.endereco.bairro}}</td>
+                            <td>{{casa.endereco.rua}}</td>
+                            <td>{{casa.endereco.numero}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+        </div>
+    </div>
+</div>

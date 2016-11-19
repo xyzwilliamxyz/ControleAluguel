@@ -1,0 +1,29 @@
+<ul class="pagination" ng-if="1 < pages.length || !autoHide">
+    <!--li ng-if="boundaryLinks" ng-class="{ disabled : pagination.current == 1 }">
+        <lx-button lx-type="flat" lx-size="xs" ng-click="setCurrent(1)">
+            <b><<</b>
+        </lx-button>
+    </li-->
+    <li ng-if="directionLinks" class="waves-effect" ng-class="{ disabled : pagination.current == 1 }">
+        
+        <lx-button lx-type="flat" lx-size="xs" ng-click="setCurrent(pagination.current - 1)">
+            <b><</b>
+        </lx-button>
+    </li>
+    <li ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" ng-class="{disabled : pageNumber == '...' }" class="waves-effect">
+        <lx-button ng-show="pagination.current == pageNumber" lx-type="raised" lx-size="xs" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</lx-button>
+        
+        <lx-button ng-show="pagination.current != pageNumber" lx-type="flat" lx-size="xs" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</lx-button>
+    </li>
+
+    <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }">
+        <lx-button lx-type="flat" lx-size="xs" ng-click="setCurrent(pagination.current + 1)">
+            <b>></b>
+        </lx-button>
+    </li>
+    <!--li ng-if="boundaryLinks"  ng-class="{ disabled : pagination.current == pagination.last }">
+        <lx-button lx-type="flat" lx-size="xs" ng-click="setCurrent(pagination.last)">
+            <b>>></b>
+        </lx-button>
+    </li-->
+</ul>

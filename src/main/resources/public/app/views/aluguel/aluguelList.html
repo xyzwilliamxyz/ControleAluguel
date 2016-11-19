@@ -1,0 +1,41 @@
+<div class="p+">
+    <div class="card">
+        <div class="p+">
+            
+            <div class="data-table-container">
+                <header class="data-table-header">
+                    <div class="data-table-header__label">
+                        <span class="fs-title">Listagem</span>
+                    </div>
+
+                    <div class="data-table-header__actions">
+                        <a href="#/aluguel/add"><lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button></a>
+                    </div>
+                </header>
+
+                <table class="data-table">
+                    <thead>
+                        <tr> 
+                            <th>Data Início</th>
+                            <th>Data Término</th>
+                            <th>Rua</th>
+                            <th>Número</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr dir-paginate="aluguel in aluguels | itemsPerPage: 10" ng-class="{'odd-table-row': ($index + 1) % 2 == 1}"
+                            ng-click="goToDetails(aluguel.aluguelId)">
+                            <td>{{aluguel.dataInicio | date:'dd/MM/yyyy'}}</td>
+                            <td>{{aluguel.dataTermino | date:'dd/MM/yyyy'}}</td>
+                            <td>{{aluguel.casa.endereco.rua}}</td>
+                            <td>{{aluguel.casa.endereco.numero}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="p+">
+    <div class="card">
+        <div class="p+">
+            
+            <div class="data-table-container">
+                <header class="data-table-header">
+                    <div class="data-table-header__label">
+                        <span class="fs-title">Listagem</span>
+                    </div>
+
+                    <div class="data-table-header__actions">
+                        <a href="#/pessoa/add"><lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button></a>
+                    </div>
+                </header>
+
+                <table class="data-table">
+                    <thead>
+                        <tr> 
+                            <th>Nome</th>
+                            <th>RG</th>
+                            <th>CPF</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr dir-paginate="pessoa in pessoas | itemsPerPage: 10" ng-class="{'odd-table-row': ($index + 1) % 2 == 1}"
+                            ng-click="goToDetails(pessoa.pessoaId)">
+                            <td>{{pessoa.nome}}</td>
+                            <td>{{pessoa.rg}}</td>
+                            <td>{{pessoa.cpf}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <dir-pagination-controls boundary-links="true"></dir-pagination-controls>
+        </div>
+    </div>
+</div>

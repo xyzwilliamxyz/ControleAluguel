@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="controle-aluguel">
+<head>
+	<title>Controle de Aluguel</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="bower_components/lumx/dist/lumx.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	
+</head>
+<body>
+
+	<div class="toolbar toolbar-color">
+	    <!--div class="toolbar__left mr++">
+	        <lx-button lx-size="l" lx-color="white" lx-type="icon"><i class="mdi mdi-menu"></i></lx-button>
+	    </div-->
+	    <!-- <span class="toolbar__label fs-title white" lx-color="white" >Desafio Perda de Peso</span> -->
+
+	    <!-- <lx-icon class="toolbar__left toolbar__label fs-title white" lx-id="account" lx-color="white"></lx-icon> -->
+
+	    <div class="toolbar__label">
+	    	<a href="/">
+                <img  id="logo-icon" class="toolbar__left  fs-title"  src="img/house.png" width="40" height="40" />
+            </a>
+	    	
+	    </div>
+	    <!-- <span class="toolbar__label fs-title white" lx-color="white" >Desafio Perda de Peso</span> -->
+
+
+	    <div class="toolbar__right">
+
+	        <lx-dropdown lx-position="right" lx-over-toggle="true" class="collapsed-menu">
+	            <lx-dropdown-toggle>
+	                <lx-button lx-size="l" lx-color="white" lx-type="icon"><i class="mdi mdi-dots-vertical"></i></lx-button>
+	            </lx-dropdown-toggle>
+
+	            <lx-dropdown-menu>
+	                <ul>
+                        <li><a class="dropdown-link" href="/">Home</a></li>
+	                    <li><a class="dropdown-link">Aluguéis</a></li>
+	                    <li><a class="dropdown-link">Pessoas</a></li>
+<!--	                    <li class="dropdown-divider"></li>-->
+	                    <li><a class="dropdown-link">Casas</a></li>
+	                    <li><a class="dropdown-link">Pagamentos</a></li>
+	                </ul>
+	            </lx-dropdown-menu>
+	        </lx-dropdown>
+            
+            <div class="expanded-menu">
+                <a href="/"><lx-button lx-type="flat" lx-color="white" lx-size="xl">HOME</lx-button></a>
+                <a href="#/aluguel"><lx-button lx-type="flat" lx-color="white" lx-size="xl">ALUGUÉIS</lx-button></a>
+                <a href="#/pessoa"><lx-button lx-type="flat" lx-color="white" lx-size="xl">PESSOAS</lx-button></a>
+                <a href="#/casa"><lx-button lx-type="flat" lx-color="white" lx-size="xl">CASAS</lx-button></a>
+                <lx-button lx-type="flat" lx-color="white" lx-size="xl">PAGAMENTOS</lx-button>
+	        </div>
+            
+	    </div>
+	</div>
+
+	<div ng-view=''></div>
+
+
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/velocity/velocity.js"></script>
+	<script src="bower_components/moment/min/moment-with-locales.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/lumx/dist/lumx.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+	<script src="app/app.js"></script>
+    
+    <script src="app/services/requestService.js"></script>
+    <script src="app/services/notificationService.js"></script>
+    
+	<script src="app/controllers/home.js"></script>
+    <script src="app/controllers/aluguel/aluguelList.js"></script>
+    <script src="app/controllers/aluguel/aluguelSave.js"></script>
+    <script src="app/controllers/pessoa/pessoaList.js"></script>
+    <script src="app/controllers/pessoa/pessoaSave.js"></script>
+    <script src="app/controllers/casa/casaList.js"></script>
+    <script src="app/controllers/casa/casaSave.js"></script>
+    
+</body>
+</html>
