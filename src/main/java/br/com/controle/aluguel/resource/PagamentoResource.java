@@ -18,12 +18,13 @@ import br.com.controle.aluguel.resource.to.PagamentoTO;
 import br.com.controle.aluguel.service.PagamentoService;
 
 @RestController
+@RequestMapping("/api")
 public class PagamentoResource {
 	
 	@Autowired
 	private PagamentoService pagamentoService;
 
-	@RequestMapping(value = "/pagamento", method = RequestMethod.POST)
+	@RequestMapping(value = "/pagamento", method = RequestMethod.PUT)
 	public ResponseEntity<PagamentoTO> savePagamento(@Valid @RequestBody PagamentoTO pagamentoTO) {
 		
 		Pagamento pagamento = convert(pagamentoTO);

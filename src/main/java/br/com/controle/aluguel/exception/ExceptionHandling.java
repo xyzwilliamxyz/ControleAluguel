@@ -11,9 +11,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableWebMvc
+//@EnableWebMvc
 @ControllerAdvice
 public class ExceptionHandling {
 	
@@ -22,8 +21,9 @@ public class ExceptionHandling {
 	@ExceptionHandler(CustomException.class)
 	public ResponseEntity<ErrorResponse> businessExceptionHandler(CustomException ex) {
 		
-		logger.error(ex.getMessage());
 		ex.printStackTrace();
+		
+		logger.error(ex.getMessage());
 		
 		ErrorResponse error = new ErrorResponse();
 		error.setStatus(ex.getErrorCode());
@@ -35,8 +35,8 @@ public class ExceptionHandling {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ErrorResponse> exceptionDefaultValidationHandler(MethodArgumentNotValidException ex) {
 		
-		logger.error(ex.getMessage());
 		ex.printStackTrace();
+		logger.error(ex.getMessage());
 		
 		ErrorResponse error = new ErrorResponse();
 		
@@ -53,8 +53,8 @@ public class ExceptionHandling {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> internalServerErrorExceptionHandler(Exception ex) {
 		
-		logger.error(ex.getMessage());
 		ex.printStackTrace();
+		logger.error(ex.getMessage());
 		
 		ErrorResponse error = new ErrorResponse();
 		error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());

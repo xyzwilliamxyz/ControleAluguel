@@ -1,5 +1,6 @@
 package br.com.controle.aluguel.resource.to;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class PessoaTO {
@@ -7,12 +8,15 @@ public class PessoaTO {
 	private Long pessoaId;
 	
 	@Size(max=200)
+	@NotNull
 	private String nome;
 
 	@Size(max=20)
+	@NotNull
 	private String rg;
 	
 	@Size(max=20)
+	@NotNull
 	private String cpf;
 	
 	@Size(max=2000)

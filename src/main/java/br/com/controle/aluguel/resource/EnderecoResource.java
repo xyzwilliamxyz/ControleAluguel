@@ -18,12 +18,13 @@ import br.com.controle.aluguel.resource.to.EnderecoTO;
 import br.com.controle.aluguel.service.EnderecoService;
 
 @RestController
+@RequestMapping("/api")
 public class EnderecoResource {
 	
 	@Autowired
 	private EnderecoService enderecoService;
 
-	@RequestMapping(value = "/endereco", method = RequestMethod.POST)
+	@RequestMapping(value = "/endereco", method = RequestMethod.PUT)
 	public ResponseEntity<EnderecoTO> saveEndereco(@Valid @RequestBody EnderecoTO enderecoTO) {
 		
 		Endereco endereco = convert(enderecoTO);

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,12 +27,21 @@ import br.com.controle.aluguel.resource.to.PessoaTO;
 import br.com.controle.aluguel.service.AluguelService;
 
 @RestController
+@RequestMapping("/api")
 public class AluguelResource {
 	
 	@Autowired
 	private AluguelService aluguelService;
 
-	@RequestMapping(value = "/aluguel", method = RequestMethod.POST)
+	@RequestMapping("/aluguel/{aluguelId}")
+	public ResponseEntity<AluguelTO> getPessoaByID(@PathVariable("aluguelId") Long pessoaId) throws CustomException {
+		
+		AluguelTO aluguelTO = convert(aluguelService.getAluguelByID(pessoaId));
+		
+		return new ResponseEntity<AluguelTO>(aluguelTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/aluguel", method = RequestMethod.PUT)
 	public ResponseEntity<AluguelTO> saveAluguel(@Valid @RequestBody AluguelTO aluguelTO) throws CustomException {
 		
 		Aluguel aluguel = convert(aluguelTO);

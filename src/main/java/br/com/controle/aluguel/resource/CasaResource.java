@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,12 +22,21 @@ import br.com.controle.aluguel.resource.to.EnderecoTO;
 import br.com.controle.aluguel.service.CasaService;
 
 @RestController
+@RequestMapping("/api")
 public class CasaResource {
 	
 	@Autowired
 	private CasaService casaService;
 
-	@RequestMapping(value = "/casa", method = RequestMethod.POST)
+	@RequestMapping(value = "/casa/{casaId}", method = RequestMethod.GET)
+	public ResponseEntity<CasaTO> getCasaByID(@PathVariable("casaId") Long casaId) throws CustomException {
+		
+		CasaTO casaTO = convert(casaService.getCasaByID(casaId));
+		
+		return new ResponseEntity<CasaTO>(casaTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/casa", method = RequestMethod.PUT)
 	public ResponseEntity<CasaTO> saveCasa(@Valid @RequestBody CasaTO casaTO) throws CustomException {
 		
 		Casa casa = convert(casaTO);

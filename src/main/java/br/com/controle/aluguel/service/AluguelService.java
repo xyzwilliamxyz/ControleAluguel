@@ -51,6 +51,15 @@ public class AluguelService {
 		return a;
 	}
 	
+	public Aluguel getAluguelByID(Long aluguelId) throws CustomException {
+		
+		if (aluguelId == null || aluguelId == 0L) {
+			throw new CustomException("Aluguel não encontrada.");
+		}
+		
+		return aluguelRepository.findOne(aluguelId);
+	}
+	
 	public List<Aluguel> getAluguels() {
 		
 		List<Aluguel> aluguels = aluguelRepository.findAll();

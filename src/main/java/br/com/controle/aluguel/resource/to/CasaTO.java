@@ -1,5 +1,6 @@
 package br.com.controle.aluguel.resource.to;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -10,12 +11,14 @@ public class CasaTO {
 	private Long casaId;
 	
 	@Size(max=200)
+	@NotNull
 	private String comodos;
 	
 	@Size(max=2000)
 	private String observacao;
 	
 	@NotNull
+	@Valid
 	@JsonProperty("endereco")
 	private EnderecoTO enderecoTO;
 

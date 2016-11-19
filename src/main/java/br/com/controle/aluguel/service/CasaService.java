@@ -24,14 +24,26 @@ public class CasaService {
 		
 		Endereco endereco = enderecoRepository.findByEnderecoId(casa.getEndereco().getEnderecoId());
 		
-		if (endereco == null) {
-			throw new CustomException("Endereço não encontrado");
+		if (endereco != null) {
+			//throw new CustomException("Endereço não encontrado");
+			endereco.setBairro(casa.getEndereco().getBairro());
+			endereco.setRua(casa.getEndereco().getRua());
+			endereco.setNumero(casa.getEndereco().getNumero());
+			casa.setEndereco(endereco);
 		}
-		casa.setEndereco(endereco);
 		
 		Casa c = casaRepository.save(casa);
 		
 		return c;
+	}
+	
+	public Casa getCasaByID(Long casaId) throws CustomException {
+		
+		if (casaId == null || casaId == 0L) {
+			throw new CustomException("Casa não encontrada.");
+		}
+		
+		return casaRepository.findOne(casaId);
 	}
 	
 	public List<Casa> getCasas() {
