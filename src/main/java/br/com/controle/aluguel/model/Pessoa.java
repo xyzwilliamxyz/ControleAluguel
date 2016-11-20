@@ -72,4 +72,13 @@ public class Pessoa implements Serializable {
 		this.observacao = observacao;
 	}
 
+	public List<PessoaAluguel> getPessoaAluguels() {
+		return pessoaAluguels;
+	}
+
+	public void setPessoaAluguels(List<PessoaAluguel> pessoaAluguels) {
+		this.pessoaAluguels = pessoaAluguels;
+	}
+
+	
 }

@@ -3,6 +3,8 @@ package br.com.controle.aluguel.resource.to;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,6 +26,8 @@ public class AluguelTO {
 	private Date dataTermino;
 	
 	@NotNull
+	@Max(31)
+	@Min(1)
 	private Integer diaPagamento;
 	
 	@Size(max=2000)

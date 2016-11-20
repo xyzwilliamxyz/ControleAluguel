@@ -2,10 +2,12 @@ package br.com.controle.aluguel.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity(name="pessoa_aluguel")
 public class PessoaAluguel implements Serializable {
@@ -15,12 +17,12 @@ public class PessoaAluguel implements Serializable {
 	private Integer tipo;
 	
 	@Id
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
 	
 	@Id
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "aluguel_id")
 	private Aluguel aluguel;
 

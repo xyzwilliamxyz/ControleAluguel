@@ -13,8 +13,8 @@ function(LxDialogService, $filter, $routeParams, $scope, saveAction, loadAction,
     };
     
     $scope.tiposPessoa = [
-        {'id': 1, 'descricao': 'Locatário'},
-        {'id': 2, 'descricao': 'Locador'},
+        {'id': 1, 'descricao': 'Locador'},
+        {'id': 2, 'descricao': 'Locatário'},
         {'id': 3, 'descricao': 'Fiador'},
         {'id': 4, 'descricao': 'Filho'}
     ];
@@ -39,13 +39,6 @@ function(LxDialogService, $filter, $routeParams, $scope, saveAction, loadAction,
             $location.path('aluguel');
         });
     };
-    
-    
-//    $scope.$on('lx-dialog__close-start', function(_event, _dialogId) {
-//        
-//        console.log('-->', $scope.aluguel.pessoaSelecionada);
-//    });
-    
     
     loadAction('casa')
     .then(function(res) {
@@ -101,15 +94,7 @@ function(LxDialogService, $filter, $routeParams, $scope, saveAction, loadAction,
     
     $scope.getTipoPessoa = function(tipoPessoa) {
         
-        if (tipoPessoa === 1) {
-            return "Locatário";
-        } else if (tipoPessoa === 2) {
-            return "Locador";
-        } else if (tipoPessoa === 3) {
-            return "Fiador";
-        } else if (tipoPessoa === 4) {
-            return "Filho";
-        }
+        return $scope.tiposPessoa[tipoPessoa - 1].descricao;
     }
     
     $scope.removePessoa = function(pessoaId) {
